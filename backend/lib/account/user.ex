@@ -9,12 +9,20 @@ defmodule Backend.Accounts.User do
     field :username, :string
     field :email, :string
     field :password_hash, :string
-    field :diplay_name, :string
+    field :display_name, :string
+    field :deleted_at, :utc_datetime
 
     has_many :messages, Backend.Channels.Message
-    has_many :channels, Backend.Channels.Channel, foreign_key: :creator_id
+    has_many :created_channels, Backend.Channels.Channel, foreign_key: :creator_id
     has_many :channel_participants, Backend.Channels.ChannelParticipant
+    has_many :channels, through: [:channel_participants, :channel]
 
     timestamps(type: :utc_datetime)
+  end
+
+  def changeset(user, attrs) do
+    user
+    |> cast(attrs, [:username, :email, :password_hash, :display_name])
+    |> validate_required([:username, :email, :password_hash])
   end
 end
