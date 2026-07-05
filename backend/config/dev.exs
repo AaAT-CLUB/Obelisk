@@ -1,5 +1,6 @@
 import Config
 
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -13,7 +14,7 @@ config :backend, BackendWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "RQ4wXMBhSCnqOrl+SCV3uFnLDIBEqws8KLqbvaH0LEEJqqJbO8b4zJCdD2QPTiOy",
+  secret_key_base: "W3ZPFhpq66ZPmoiN2HePAXXxizDIDXWwrEMxQD1cCslyPnAwI8opT3yXN7Snw4tz",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:backend, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:backend, ~w(--watch)]}

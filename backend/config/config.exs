@@ -20,13 +20,14 @@ config :backend, BackendWeb.Endpoint,
     layout: false
   ],
   pubsub_server: Backend.PubSub,
-  live_view: [signing_salt: "k2zyXcxR"]
+  live_view: [signing_salt: "Y8Fhq0if"]
 
 # Configure LiveView
 config :phoenix_live_view,
   # the attribute set on all root tags. Used for Phoenix.LiveView.ColocatedCSS.
   root_tag_attribute: "phx-r"
-
+config :phoenix_live_view, :colocated_assets,
+  disable_symlink_warning: true
 # Configure the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
