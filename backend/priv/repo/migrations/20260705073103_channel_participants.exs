@@ -11,5 +11,7 @@ defmodule Backend.Repo.Migrations.ChannelParticipants do
 
       timestamps(type: :timestamptz)
     end
+
+    create unique_index(:channel_participants, [:user_id, :channel_id])
   end
 end

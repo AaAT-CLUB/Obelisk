@@ -13,5 +13,4 @@ defmodule Backend.Channels.ChannelParticipant do
 
     timestamps(type: :utc_datetime)
   end
-
 end
