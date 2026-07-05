@@ -3,13 +3,14 @@ defmodule Backend.Channels.ChannelParticipant do
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
+  @foreign_key_type :binary_id
 
   schema "channel_participants" do
     field :role, Ecto.Enum, values: [:owner, :member]
     field :left_at, :utc_datetime #what happens when they rejoin?
 
-    belongs_to :channel, Backend.Channels.Channel
-    belongs_to :user, Backend.Accounts.User
+    belongs_to :channel, Backend.Channels.Channel, foreign_key: :channel_id
+    belongs_to :user, Backend.Accounts.User, foreign_key: :user_id
 
     timestamps(type: :utc_datetime)
   end

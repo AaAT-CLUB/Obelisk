@@ -12,9 +12,9 @@ defmodule Backend.Accounts.User do
     field :display_name, :string
     field :deleted_at, :utc_datetime
 
-    has_many :messages, Backend.Channels.Message
+    has_many :messages, Backend.Channels.Message, foreign_key: :author_id
     has_many :created_channels, Backend.Channels.Channel, foreign_key: :creator_id
-    has_many :channel_participants, Backend.Channels.ChannelParticipant
+    has_many :channel_participants, Backend.Channels.ChannelParticipant, foreign_key: :user_id
     has_many :channels, through: [:channel_participants, :channel]
 
     timestamps(type: :utc_datetime)

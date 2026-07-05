@@ -12,7 +12,7 @@ defmodule Backend.Channels.Message do
     field :deleted_at, :utc_datetime
 
     belongs_to :channel, Backend.Channels.Channel
-    belongs_to :user, Backend.Accounts.User
-    belongs_to :message, Backend.Channels.Message
+    belongs_to :author, Backend.Accounts.User, foreign_key: :author_id
+    belongs_to :message, Backend.Channels.Message, foreign_key: :parent_message_id
   end
 end
