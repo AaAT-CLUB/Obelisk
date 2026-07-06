@@ -14,4 +14,10 @@ defmodule Backend.Channels.ChannelParticipant do
 
     timestamps(type: :utc_datetime)
   end
+
+  def changeset(channel_participant, attrs) do
+    channel_participant
+    |> cast(attrs, [:user, :channel, :role])
+    |> validate_required([:user, :channel])
+  end
 end

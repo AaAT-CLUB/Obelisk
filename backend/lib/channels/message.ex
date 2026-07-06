@@ -15,4 +15,10 @@ defmodule Backend.Channels.Message do
     belongs_to :author, Backend.Accounts.User, foreign_key: :author_id
     belongs_to :message, Backend.Channels.Message, foreign_key: :parent_message_id
   end
+
+  def changeset(message, attrs) do
+    message
+    |> cast(attrs, [:author, :channel, :content, :metadata, :type, :message])
+    |> validate_required([:author, :channel, :content, :metadata, :type])
+  end
 end
